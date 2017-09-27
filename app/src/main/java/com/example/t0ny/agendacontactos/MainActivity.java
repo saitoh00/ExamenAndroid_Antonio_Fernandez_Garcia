@@ -9,10 +9,10 @@ import android.widget.Button;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    public Integer ALTA=100;
-    public Integer BAJA=200;
-    public Integer LISTAR=300;
-    public Integer EDITAR=400;
+    public static final Integer ALTA=100;
+    public static final Integer BAJA=200;
+    public static final Integer LISTAR=300;
+    public static final Integer EDITAR=400;
     public ArrayList<Contacto> listaContactos = new ArrayList();
 
     @Override
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (resultCode == Activity.RESULT_OK) {
                 if (data.hasExtra("alta")) {
                     System.out.println("Tamaño antes :" + listaContactos.size());
-                    listaContactos.add((Contacto) data.getParcelableExtra("alta"));
+                    listaContactos.add((Contacto) data.getParcelableExtra("alta"));  //se añade contacto que previamente hemos pasado con un Intent desde la actividad GrabarDatos
                     System.out.println("Tamaño despues :" + listaContactos.size());
                     //System.out.println("Tamaño despues :" + listaContactos.get());
                 }
@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (BAJA == requestCode) {
                 if (resultCode == Activity.RESULT_OK) {
                     if (data.hasExtra("borrar")) {
-                        System.out.println("Tamaño antes :" + listaContactos.size());
-                        listaContactos.remove((Contacto) data.getParcelableExtra("borrar"));
+                        System.out.println("Tamaño antes :" + listaContactos.size());  //verificacion del tamaño para saber si se hace el borrado/
+                        listaContactos.remove((Contacto) data.getParcelableExtra("borrar"));  //se borra contacto que previamente hemos pasado con un Intent desde la actividad BorrarDatos
                         System.out.println("Tamaño despues :" + listaContactos.size());
                         // System.out.println("Contacto despues :" + listaContactos.get(0));
                     }
