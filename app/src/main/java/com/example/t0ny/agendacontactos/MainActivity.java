@@ -33,24 +33,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (ALTA == requestCode) {
             if (resultCode == Activity.RESULT_OK) {
                 if (data.hasExtra("alta")) {
-                    System.out.println("Tamaño antes :" + listaContactos.size());
+                 //pruebas  System.out.println("Tamaño antes :" + listaContactos.size());
                     listaContactos.add((Contacto) data.getParcelableExtra("alta"));  //se añade contacto que previamente hemos pasado con un Intent desde la actividad GrabarDatos
-                    System.out.println("Tamaño despues :" + listaContactos.size());
-                    System.out.println("Tamaño despues :" + listaContactos.get(0));
+                 //pruebas   System.out.println("Tamaño despues :" + listaContactos.size());
+                  // pruebas  System.out.println("Tamaño despues :" + listaContactos.get(0));
                 }
             }
         } else {
             if (BAJA == requestCode) {
                 if (resultCode == Activity.RESULT_OK) {
                     if (data.hasExtra("borrar")) {
-                        System.out.println("Tamaño antes :" + listaContactos.size());  //verificacion del tamaño para saber si se hace el borrado/
+                       // System.out.println("Tamaño antes :" + listaContactos.size());  //verificacion del tamaño para saber si se hace el borrado/
                         listaContactos.remove((Contacto) data.getParcelableExtra("borrar"));  //se borra contacto que previamente hemos pasado con un Intent desde la actividad BorrarDatos
-                        System.out.println("Tamaño despues :" + listaContactos.size());
-                        // System.out.println("Contacto despues :" + listaContactos.get(0));
+                      //  System.out.println("Tamaño despues :" + listaContactos.size());
+
                     }
                 }
             }
-            else {
+        /*    else {
                 if (LISTAR == requestCode) {
                     if (resultCode == Activity.RESULT_OK) {
 
@@ -59,13 +59,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } else {
                     if (EDITAR == requestCode) {
                         if (resultCode == Activity.RESULT_OK) {
-                            if (data.hasExtra("editar")) {
 
-                            }
                         }
                     }
                 }
-            }
+            }*/
         }
     }
 
@@ -75,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch(v.getId()){
             case R.id.botonadd:
                 intent=new Intent(this, GrabarDatos.class);
-                startActivityForResult(intent, ALTA);
+                startActivityForResult(intent, ALTA);  //mandamos un intent junto con un Integer para definin la Actividad a la que llamamos
                 break;
             case R.id.botonborrar:
                 intent=new Intent(this, BorrarDatos.class);
