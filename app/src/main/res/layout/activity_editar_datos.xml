@@ -51,7 +51,6 @@
         android:text="guardar cambios" />
 
     <Button
-        android:id="@+id/botoncancelareditar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/botonguardarcambios"
@@ -85,7 +84,6 @@
         android:text="Apellidos:" />
 
     <TextView
-        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView2"

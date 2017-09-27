@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (resultCode == Activity.RESULT_OK) {
                     if (data.hasExtra("borrar")) {
                        // System.out.println("Tamaño antes :" + listaContactos.size());  //verificacion del tamaño para saber si se hace el borrado/
-                        listaContactos.remove((Contacto) data.getParcelableExtra("borrar"));  //se borra contacto que previamente hemos pasado con un Intent desde la actividad BorrarDatos
+                        listaContactos.remove(data.getParcelableExtra("borrar"));  //se borra contacto que previamente hemos pasado con un Intent desde la actividad BorrarDatos
                       //  System.out.println("Tamaño despues :" + listaContactos.size());
 
                     }
