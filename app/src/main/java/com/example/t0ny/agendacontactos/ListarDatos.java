@@ -31,6 +31,7 @@ public class ListarDatos extends AppCompatActivity implements AdapterView.OnItem
 
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
+        adapter.notifyDataSetChanged();
 
     }
 
@@ -45,14 +46,21 @@ public class ListarDatos extends AppCompatActivity implements AdapterView.OnItem
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         if(MainActivity.EDITAR ==requestCode) {
             if (resultCode == Activity.RESULT_OK) {
                 if(data.hasExtra("editar")){
                     Contacto nuevo= data.getParcelableExtra("editar");
+                    System.out.println("Tamaño despues :" + contactos.get(0));
                     contactos.remove(copia);
                     contactos.add(nuevo);
-                    System.out.println("Tamaño despues :" + contactos.size());
                     System.out.println("Tamaño despues :" + contactos.get(0));
+                    adapter=new ArrayAdapter<Contacto>(this,android.R.layout.simple_list_item_1, contactos);
+
+                    listView.setAdapter(adapter);
+
+                    //System.out.println("Tamaño despues :" + contactos.get(0));  //Prueba por A.Monitor para ver si se ha editado el contacto
+
 
 
                 }
