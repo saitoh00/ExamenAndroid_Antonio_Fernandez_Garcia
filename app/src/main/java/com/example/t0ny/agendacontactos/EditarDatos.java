@@ -32,10 +32,6 @@ public class EditarDatos extends AppCompatActivity implements View.OnClickListen
 
 
 
-
-
-
-
     }
 
     @Override
@@ -46,7 +42,8 @@ public class EditarDatos extends AppCompatActivity implements View.OnClickListen
                 Contacto contacto=editarContacto();
                 intent = new Intent(this, MainActivity.class);
                 intent.putExtra("editar", contacto);
-                startActivity(intent);
+                setResult(RESULT_OK,intent);
+                finish();
                 break;
            /* case R.id.botoncancelar:
                 intent = new Intent(this, BorrarDatos.class);

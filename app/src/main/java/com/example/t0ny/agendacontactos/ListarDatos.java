@@ -1,5 +1,6 @@
 package com.example.t0ny.agendacontactos;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -15,6 +16,7 @@ public class ListarDatos extends AppCompatActivity implements AdapterView.OnItem
     private ListView listView;
     private ArrayAdapter adapter;
     private AlertDialog ventana;
+    private Contacto copia;
     private ArrayList <Contacto> contactos ;
 
     @Override
@@ -36,7 +38,6 @@ public class ListarDatos extends AppCompatActivity implements AdapterView.OnItem
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         if(ventana==null){
             ventana=CreateDialog(contactos.get(i));
-
         }
         ventana.show();
     }
@@ -44,6 +45,19 @@ public class ListarDatos extends AppCompatActivity implements AdapterView.OnItem
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if(MainActivity.EDITAR ==requestCode) {
+            if (resultCode == Activity.RESULT_OK) {
+                if(data.hasExtra("editar")){
+                    Contacto nuevo= data.getParcelableExtra("editar");
+                    contactos.remove(copia);
+                    contactos.add(nuevo);
+                    System.out.println("Tamaño despues :" + contactos.size());
+                    System.out.println("Tamaño despues :" + contactos.get(0));
+
+
+                }
+            }
+        }
     }
 
     public AlertDialog CreateDialog(final Contacto c) {
@@ -54,8 +68,9 @@ public class ListarDatos extends AppCompatActivity implements AdapterView.OnItem
             public void onClick(DialogInterface dialog, int i) {
                 Intent intent;
                 intent=new Intent(ListarDatos.this, EditarDatos.class);
+                copia= c;
                 intent.putExtra("contacto", c);
-                startActivity(intent);
+                startActivityForResult(intent, MainActivity.EDITAR);
             }
         });
 

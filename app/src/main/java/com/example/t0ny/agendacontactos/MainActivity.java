@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     System.out.println("Tamaño antes :" + listaContactos.size());
                     listaContactos.add((Contacto) data.getParcelableExtra("alta"));  //se añade contacto que previamente hemos pasado con un Intent desde la actividad GrabarDatos
                     System.out.println("Tamaño despues :" + listaContactos.size());
-                    //System.out.println("Tamaño despues :" + listaContactos.get());
+                    System.out.println("Tamaño despues :" + listaContactos.get(0));
                 }
             }
         } else {
