@@ -17,6 +17,7 @@ public class ListarDatos extends AppCompatActivity implements AdapterView.OnItem
     private AlertDialog ventana;
     private ArrayList <Contacto> contactos ;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +42,7 @@ public class ListarDatos extends AppCompatActivity implements AdapterView.OnItem
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if(MainActivity.EDITAR)
     }
 
     public AlertDialog CreateDialog(final Contacto c) {

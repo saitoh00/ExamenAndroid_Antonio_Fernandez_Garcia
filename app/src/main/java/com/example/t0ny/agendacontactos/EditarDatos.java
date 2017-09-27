@@ -45,6 +45,7 @@ public class EditarDatos extends AppCompatActivity implements View.OnClickListen
             case R.id.botonguardarcambios:
                 Contacto contacto=editarContacto();
                 intent = new Intent(this, MainActivity.class);
+                intent.putExtra("editar", contacto);
                 startActivity(intent);
                 break;
            /* case R.id.botoncancelar:
