@@ -30,8 +30,6 @@ public class EditarDatos extends AppCompatActivity implements View.OnClickListen
        // Button btncancelaredicion=(Button)findViewById(R.id.botoncancelareditar);
        // btncancelaredicion.setOnClickListener(this);
 
-
-
     }
 
     @Override
